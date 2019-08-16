@@ -2,6 +2,9 @@
 
 > A Vue.js project
 
+## look
+!['look'](https://github.com/banana618859/vue-search/blob/master/src/assets/show.png)
+
 ## Build Setup
 
 ``` bash
