@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var utils = require('./utils')
 
 module.exports = {
   entry: './src/main.js',
@@ -35,6 +36,14 @@ module.exports = {
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]'
+        }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          name: utils.assetsPath('fonts/[name].[ext]')
         }
       }
     ]

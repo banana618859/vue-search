@@ -1,18 +1,49 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png" style="width:80px;">
+    <img src="./assets/logo.png" style="width:40px; position:absolute; left:20px; top:10px;">
     <h1>{{ msg }}</h1>
+
+    <div style="padding:0 20px;">
+
+      <el-tabs v-model="activeTab" @tab-click="handleClick">
+        <el-tab-pane label="用户管理" name="first"></el-tab-pane>
+        <el-tab-pane label="配置管理" name="second"></el-tab-pane>
+        <el-tab-pane label="角色管理" name="third"></el-tab-pane>
+        <el-tab-pane label="定时任务补偿" name="fourth"></el-tab-pane>
+      </el-tabs>
+
+    </div>
+
     <div style="width:600px; border:1px solid #eee; margin:10px auto;">
 
-      <input type="text" name="" 
-      style="width:100%; height:40px; line-height:40px; padding:5px 10px; " 
-      v-model="searchKeyWord" @change="getSearchRel" placeholder="/请输入搜索内容">
-    
-      <ul id="resultRel" class="searchRel">
-        <li v-for="(item,index) in tableData" :key=index style="width:100%;">
-          <p>{{index+" : "+item.goodname}}</p>
-        </li>
-      </ul>
+      <div v-show="activeTab =='first'">
+        <input type="text" name="" 
+        style="width:100%; height:40px; line-height:40px; padding:5px 10px; " 
+        v-model="searchKeyWord" @change="getSearchRel" placeholder="/请输入搜索内容">
+      
+        <ul id="resultRel" class="searchRel">
+          <li v-for="(item,index) in tableData" :key=index style="width:100%;">
+            <p>{{index+" : "+item.goodname}}</p>
+          </li>
+        </ul>
+      </div>
+
+      <div 
+        v-show="activeTab =='second'" 
+        style="min-height:300px;">
+        second page!
+      </div>
+      <div 
+        v-show="activeTab =='third'"
+        style="min-height:300px;">
+        third page!
+      </div>
+      <div 
+        v-show="activeTab =='fourth'"
+        style="min-height:300px;"
+        >
+        fourth page!
+      </div>
 
     </div>
 
@@ -30,6 +61,7 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
+      activeTab: 'second',
       searchKeyWord: '茯苓',
       tableData: [{
         goodname:'',
@@ -45,6 +77,10 @@ export default {
     
   },
   methods:{
+    handleClick(tab, event) {
+      console.log(tab, event);
+      this.activeName = tab.name;
+    },
     getSearchRel(){
       var that = this;
       this.tableData = [];
