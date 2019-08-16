@@ -5,7 +5,11 @@
 
     <div style="padding:0 20px;">
 
-      <el-tabs v-model="activeTab" @tab-click="handleClick">
+      <el-tabs 
+        v-model="activeTab" 
+        @tab-click="handleClick" 
+        @tab-add="handleAddTab"
+        @tab-remove="handleRemoveTab">
         <el-tab-pane label="用户管理" name="first"></el-tab-pane>
         <el-tab-pane label="配置管理" name="second"></el-tab-pane>
         <el-tab-pane label="角色管理" name="third"></el-tab-pane>
@@ -80,6 +84,12 @@ export default {
     handleClick(tab, event) {
       console.log(tab, event);
       this.activeName = tab.name;
+    },
+    handleAddTab(){
+      alert('do you want to add one item?')
+    },
+    handleRomoveTab(){
+      alert('Do you want to remove a item?')
     },
     getSearchRel(){
       var that = this;
