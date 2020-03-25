@@ -36,6 +36,20 @@
         v-show="activeTab =='second'" 
         style="min-height:300px;">
         second page!
+          <el-select
+            @mouseenter.native="selectEnter"
+            @focus="focusFun"
+            @blur="blurFun"
+            ref="son"
+            v-model="value" 
+            placeholder="请选择">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
       </div>
       <div 
         v-show="activeTab =='third'"
@@ -65,11 +79,28 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      activeTab: 'second',
+      activeTab: 'first',
       searchKeyWord: '茯苓',
       tableData: [{
         goodname:'',
-      }]
+      }],
+      options: [{
+          value: '选项1',
+          label: '黄金糕'
+        }, {
+          value: '选项2',
+          label: '双皮奶'
+        }, {
+          value: '选项3',
+          label: '蚵仔煎'
+        }, {
+          value: '选项4',
+          label: '龙须面'
+        }, {
+          value: '选项5',
+          label: '北京烤鸭'
+        }],
+        value: ''
     }
   },
   created(){
@@ -81,6 +112,30 @@ export default {
     
   },
   methods:{
+    selectEnter(){
+      console.log('mouseenter123')
+      // console.log(this.$refs["son"])
+      this.$refs.son.visible = true
+      // this.$refs.son.focus()
+      /*this.$nextTick(() => {
+        this.$refs.son.focus()
+      })*/
+    },
+    selectLeave(){
+      console.log('selectLeave')
+      // console.log(this.$refs["son"])
+      this.$refs.son.visible = false
+      // this.$refs.son.focus()
+      /*this.$nextTick(() => {
+        this.$refs.son.focus()
+      })*/
+    },
+    focusFun(){
+      console.log('focusFun')
+    },
+    blurFun(){
+      console.log('blurFun')
+    },
     handleClick(tab, event) {
       console.log(tab, event);
       this.activeName = tab.name;
@@ -88,10 +143,11 @@ export default {
     handleAddTab(){
       alert('do you want to add one item?')
     },
-    handleRomoveTab(){
+    handleRemoveTab(){
       alert('Do you want to remove a item?')
     },
     getSearchRel(){
+      console.log('this.searchKeyword:',this.searchKeyWord)
       var that = this;
       this.tableData = [];
       //请求百度api
