@@ -1,15 +1,11 @@
 /*
  * @Descripttion: 
  * @Author: yizheng.yuan
- * @Date: 2019-08-16 18:56:11
+ * @Date: 2020-10-25 22:57:53
  * @LastEditors: yizheng.yuan
- * @LastEditTime: 2020-10-25 23:37:32
+ * @LastEditTime: 2020-10-25 23:28:37
  */
-var merge = require('webpack-merge')
-var prodEnv = require('./prod.env')
-
-module.exports = merge(prodEnv, {
-  NODE_ENV: '"development"',
+module.exports = {
   devServer: {
     open: true,
     host: 'localhost',
@@ -28,4 +24,5 @@ module.exports = merge(prodEnv, {
         
     }
   }
-})
+
+}

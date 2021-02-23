@@ -1,9 +1,17 @@
+/*
+ * @Descripttion: 
+ * @Author: yizheng.yuan
+ * @Date: 2019-08-16 11:54:01
+ * @LastEditors: yizheng.yuan
+ * @LastEditTime: 2020-10-25 23:03:38
+ */
 var path = require('path')
 var webpack = require('webpack')
 var utils = require('./utils')
 
 module.exports = {
   entry: './src/main.js',
+  
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
@@ -58,6 +66,7 @@ module.exports = {
     historyApiFallback: true,
     noInfo: true,
     overlay: true
+    
   },
   performance: {
     hints: false
