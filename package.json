@@ -17,7 +17,7 @@
     "html2canvas": "^1.0.0-rc.7",
     "jquery": "^3.4.1",
     "jsbarcode": "^3.11.3",
-    "jspdf": "^2.1.1",
+    "jspdf": "^2.3.1",
     "qrcodejs2": "0.0.2",
     "quagga": "^0.12.1",
     "sortablejs": "^1.10.2",
